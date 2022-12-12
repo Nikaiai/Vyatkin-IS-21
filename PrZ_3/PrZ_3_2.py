@@ -4,24 +4,24 @@
 # Дано трехзначное число, в котором первая цифра указывает на масть, а вторые две на достоинство карты.
 # Вывести соответствующее название карты вида «дама червей», «туз треф» и т.п.
 card = input("Введите число: ")
-a = (int(card[0]))
-b = (int(card[1:3]))
-while a > 0 and a < 5 and b < 15 and b > 10:
-    if b == 11:
+mast = (int(card[0]))
+cennost = (int(card[1:3]))
+while mast > 0 and mast < 5 and cennost < 15 and cennost > 10:
+    if cennost == 11:
         print('Валет', end=" ")
-    elif b == 12:
+    elif cennost == 12:
         print("Дама", end=" ")
-    elif b == 13:
+    elif cennost == 13:
         print("Король", end=" ")
-    elif b == 14:
+    elif cennost == 14:
         print("Туз", end=" ")
-    if a == 1:
+    if mast == 1:
         print("Пик")
-    elif a == 2:
+    elif mast == 2:
         print("Треф")
-    elif a == 3:
+    elif mast == 3:
         print("Бубен")
-    elif a == 4:
+    elif mast == 4:
         print("Червей")
     break
 else:
