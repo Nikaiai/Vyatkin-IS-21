@@ -1,0 +1,50 @@
+import sqlite3
+
+connect = sqlite3.connect('Анкета.db')
+cursor = connect.cursor()
+
+cursor.execute("""CREATE TABLE IF NOT EXISTS Анкета(
+    id INTEGER PRIMARY KEY,
+    имя VARCHAR,
+    фамилия VARCHAR,
+    дата_рождения DATE,
+    пол VARCHAR,
+    дата_найма DATE,
+    должность VARCHAR,
+    отдел VARCHAR,
+    базовая_ставка DECIMAL
+    )
+    """)
+
+connect = sqlite3.connect('Больничные листы.db')
+cursor = connect.cursor()
+
+cursor.execute("""CREATE TABLE IF NOT EXISTS Больничные_листы(
+    id INTEGER PRIMARY KEY,
+    id_сотрудника INTEGER,
+    дата_начала DATE,
+    дата_окончания DATE,
+    причина VARCHAR,
+    диагноз VARCHAR,
+    оплачен BOOLEAN,
+    FOREIGN KEY(id_сотрудника) references Анкета(id_сотрудника)
+    )
+    """)
+    
+    
+    
+    
+    
+    import sqlite3
+
+connect = sqlite3.connect('Анкета.db')
+cursor = connect.cursor()
+
+anketi = [
+    (1, 'Максим', 'Домрин', "1968-25-05", 'мужской', "2005-04-05", 'Грузчик', 'Продаж', 35000.00),
+    (2, 'Михаил', "Чернов", "1999-30-02", "мужской", "2022-24-02", "Менеджер", "Продаж", 82000.00),
+    (3, "Артур", "Саркисян", "1952-24-02", "мужской", "1999-18-07", "Главный Менеджер", "Продаж", 148800.00)
+    ]
+with sqlite3.connect('Анкета.db') as con:
+    cur = con.cursor()
+    cur.executemany("INSERT INTO Анкета VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", anketi)
