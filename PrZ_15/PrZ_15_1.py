@@ -1,9 +1,9 @@
 import sqlite3
 
-connect = sqlite3.connect('Анкета.db')
+connect = sqlite3.connect('Аптека.db')
 cursor = connect.cursor()
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS Анкета(
+cursor.execute("""CREATE TABLE IF NOT EXISTS Анкеты(
     id INTEGER PRIMARY KEY,
     имя VARCHAR,
     фамилия VARCHAR,
@@ -24,6 +24,6 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Больничные_листы(
     причина VARCHAR,
     диагноз VARCHAR,
     оплачен BOOLEAN,
-    FOREIGN KEY(id_сотрудника) references Анкета(id_сотрудника)
+    FOREIGN KEY(id_сотрудника) references Анкеты(id_сотрудника)
     )
     """)
