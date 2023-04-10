@@ -31,9 +31,9 @@ with sqlite3.connect('Аптека.db') as con:
     result = cur.fetchall()
     print(f"Список болничных листов, оплаченных компанией: {result}\n")
 
-    #cur.execute("SELECT имя, фамилия FROM Больничные_листы, Анкеты WHERE дата_окончания > '2023-04-01' ")
-    #result = cur.fetchall()
-    #print(f"Список болничных листов, оплаченных компанией: {result}\n")
+    cur.execute("SELECT имя, фамилия FROM Больничные_листы FULL OUTER JOIN Анкеты ON дата_окончания = '2023-02-24'")
+    result = cur.fetchall()
+    print(f"Список болничных листов, оплаченных компанией: {result}\n")
 
     #cur.execute("SELECT базовая_ставка FROM Анкеты ")
     #zrplt = cur.fetchall()
@@ -42,4 +42,4 @@ with sqlite3.connect('Аптека.db') as con:
 
     cur.execute("SELECT имя, фамилия FROM Анкеты WHERE базовая_ставка > 100000.00")
     result = cur.fetchall()
-    print(f"\nСписок сотрудников и их должности: {result} \n")
+    print(f"\nСписок сотрудников, имеющих базовую ставку больше 100000: {result} \n")
