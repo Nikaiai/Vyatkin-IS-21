@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import date
 with sqlite3.connect('Аптека.db') as con:
     cur = con.cursor()
     cur2 = con.cursor()
@@ -27,19 +28,20 @@ with sqlite3.connect('Аптека.db') as con:
     result = cur.fetchall()
     print(f"Список болничных листов, оплаченных компанией: {result}\n")
 
-    cur.execute("SELECT id, id_сотрудника, дата_начала, дата_окончания, причина, диагноз FROM Больничные_листы WHERE оплачен = True ")
+    cur.execute("SELECT DISTINCT имя, фамилия FROM Больничные_листы INNER JOIN Анкеты ON Анкеты.id = Больничные_листы.id_сотрудника WHERE дата_окончания > '2023-04-01'")
     result = cur.fetchall()
-    print(f"Список болничных листов, оплаченных компанией: {result}\n")
+    print(f"Список сотрудников, имеющих больничные на текущий месяц: {result}\n")
 
-    cur.execute("SELECT имя, фамилия FROM Больничные_листы FULL OUTER JOIN Анкеты ON дата_окончания = '2023-02-24'")
+    cur.execute("SELECT round(avg(базовая_ставка), 1) FROM Анкеты ")
     result = cur.fetchall()
-    print(f"Список болничных листов, оплаченных компанией: {result}\n")
-
-    #cur.execute("SELECT базовая_ставка FROM Анкеты ")
-    #zrplt = cur.fetchall()
-    #avg_lst = sum(zrplt)/len(zrplt) 
-    #print(avg_lst)
+    print(f"Средняя ставка среди сотрудников: {result}\n")
 
     cur.execute("SELECT имя, фамилия FROM Анкеты WHERE базовая_ставка > 100000.00")
     result = cur.fetchall()
     print(f"\nСписок сотрудников, имеющих базовую ставку больше 100000: {result} \n")
+
+    cur.execute("SELECT дата_начала, дата_окончания FROM Больничные_листы")
+    first = cur.fetchall()
+    print(first)
+    #for i in first:
+        
