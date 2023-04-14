@@ -8,8 +8,8 @@ with sqlite3.connect('Аптека.db') as con:
 
     cur.execute("UPDATE Анкеты SET дата_найма = '2023-04-10' WHERE id = 1")
 
-    #cur.execute("UPDATE Больничные_листы SET  причина = 'Болезнь' where id = 341206")
+    cur.execute("UPDATE Больничные_листы SET причина = 'Болезнь' WHERE id = 341206")
 
     #cur.execute("UPDATE Анкеты INNER JOIN Больничные_листы ON оплачен = True SET базовая_ставка = 150000.00 ")
 
-    cur.execute("UPDATE Больничные_листы JOIN Анкеты ON отдел = Бухгалтерия SET причина = 156 ")
+    #cur.execute("UPDATE Больничные_листы JOIN Анкеты ON отдел = Бухгалтерия SET причина = 156 ")

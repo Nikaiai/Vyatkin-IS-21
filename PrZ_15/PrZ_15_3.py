@@ -40,8 +40,11 @@ with sqlite3.connect('Аптека.db') as con:
     result = cur.fetchall()
     print(f"\nСписок сотрудников, имеющих базовую ставку больше 100000: {result} \n")
 
-    cur.execute("SELECT дата_начала, дата_окончания FROM Больничные_листы")
-    first = cur.fetchall()
-    print(first)
+    #cur.execute("SELECT дата_начала, дата_окончания FROM Больничные_листы")
+    #first = cur.fetchall()
+    #print(first)
     #for i in first:
-        
+
+    cur.execute("SELECT имя, фамилия, дата_рождения, пол, дата_найма, должность, отдел, базовая_ставка, дата_начала, дата_окончания, причина, диагноз, оплачен FROM Анкеты INNER JOIN Больничные_листы ON Анкеты.id = Больничные_листы.id_сотрудника WHERE дата_окончания > '2023-04-01'")
+    result = cur.fetchall()
+    print(f"\nИнформация о сотрудниках и их больничных листах за последний месяц: {result} \n")
