@@ -2,7 +2,7 @@ import sqlite3
 with sqlite3.connect('Аптека.db') as con:
     cur = con.cursor()
 
-    ##cur.execute("DELETE FROM Больничные_листы INNER JOIN Анкеты ON Анкеты.id = Больничные_листы.id_сотрудника WHERE имя = 'Иван'")
+    session.execute("DELETE FROM Больничные_листы INNER JOIN Анкеты ON Анкеты.id = Больничные_листы.id_сотрудника WHERE имя = 'Иван'")
 
     ##cur.execute("DELETE FROM Больничные_листы INNER JOIN Анкеты ON Анкеты.id = Больничные_листы.id_сотрудника WHERE фамилия = 'Петров'")
 
@@ -18,4 +18,8 @@ with sqlite3.connect('Аптека.db') as con:
 
     #cur.execute("DELETE FROM Больничные_листы WHERE дата_окончания < '2023-04-14'")
 
-    cur.execute("DELETE FROM Больничные_листы WHERE дата_окончания > '2023-01-01'")
+    #cur.execute("DELETE FROM Больничные_листы WHERE дата_начала > '2023-01-01'")
+
+    #cur.execute("DELETE FROM Больничные_листы WHERE дата_окончания > '2023-01-01'")
+
+    
