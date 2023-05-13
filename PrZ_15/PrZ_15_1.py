@@ -24,6 +24,6 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS Больничные_листы(
     причина VARCHAR,
     диагноз VARCHAR,
     оплачен BOOLEAN,
-    FOREIGN KEY(id_сотрудника) references Анкеты(id_сотрудника)
+    FOREIGN KEY(id) references Анкеты(id_сотрудника)
     )
     """)

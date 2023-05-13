@@ -12,7 +12,7 @@ with sqlite3.connect('Аптека.db') as con:
  #5
     #cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE пол = 'женский')")
  #6, 15
-    ##cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE julianday(дата_рождения) - julianday('2023-04-10') < -18000)")
+    cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE julianday(дата_рождения) - julianday('2023-04-10') < -18000)")
  #7
     #cur.execute("DELETE FROM Больничные_листы WHERE оплачен = FALSE")
  #8
