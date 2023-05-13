@@ -24,6 +24,6 @@ with sqlite3.connect('Аптека.db') as con:
  #12    
     ##cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE фамилия LIKE 'С%')")
  #13
-    ##cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE должность = 'Менеджер' AND оплачен = FALSE)")
+    cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE должность = 'Менеджер' AND оплачен = FALSE)")
  #14
     ##cur.execute("DELETE FROM Больничные_листы WHERE id_сотрудника = (SELECT id FROM Анкеты WHERE отдел = 'IT' AND дата_окончания > '2023-01-01')")
