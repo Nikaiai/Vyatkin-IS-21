@@ -1,3 +1,4 @@
+# Вариант 3
 import sqlite3
 
 connect = sqlite3.connect('Аптека.db')
